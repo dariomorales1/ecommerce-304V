@@ -1,0 +1,11 @@
+services:
+  shipping-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shipping-service
+    ports:
+      - "${SERVER_PORT:-8087}:8087"
+    env_file:
+      - .env
+    restart: unless-stopped

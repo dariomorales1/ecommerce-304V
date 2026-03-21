@@ -1,0 +1,9 @@
+SERVER_PORT=8087
+APP_NAME=shipping-service
+
+DB_URL=jdbc:postgresql://levelup.ddns.net:5432/postgres
+DB_USERNAME=postgres
+DB_PASSWORD=TU_PASSWORD_REAL
+
+DDL_AUTO=update
+DB_POOL_SIZE=10

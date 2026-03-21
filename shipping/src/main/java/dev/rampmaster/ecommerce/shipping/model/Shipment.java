@@ -1,52 +1,40 @@
 package dev.rampmaster.ecommerce.shipping.model;
 
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@Entity
+@Table(name = "shipments")
 public class Shipment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long userId;
     private Long orderId;
-    private String carrier;
-    private String status;
 
-    public Shipment() {
-    }
+    private String trackingCode;
 
-    public Shipment(Long id, Long orderId, String carrier, String status) {
-        this.id = id;
-        this.orderId = orderId;
-        this.carrier = carrier;
-        this.status = status;
-    }
+    @Enumerated(EnumType.STRING)
+    private ShipmentStatus status;
 
-    public Long getId() {
-        return id;
-    }
+    private boolean paid;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Embedded
+    private ShipmentAddressSnapshot address;
 
-    public Long getOrderId() {
-        return orderId;
-    }
+    private BigDecimal total;
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
+    @OneToMany(mappedBy = "shipment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShipmentItem> items = new ArrayList<>();
 
-    public String getCarrier() {
-        return carrier;
-    }
 
-    public void setCarrier(String carrier) {
-        this.carrier = carrier;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }
 
