@@ -1,5 +1,6 @@
 package dev.rampmaster.ecommerce.shipping.controller;
 
+import dev.rampmaster.ecommerce.shipping.dto.CreateShipmentRequest;
 import dev.rampmaster.ecommerce.shipping.model.Shipment;
 import dev.rampmaster.ecommerce.shipping.service.ShipmentService;
 import org.springframework.http.HttpStatus;
@@ -37,9 +38,12 @@ public class ShipmentController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public ResponseEntity<Shipment> create(@RequestBody Shipment entity) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(entity));
+    @PostMapping("/from-order/{orderId}")
+    public ResponseEntity<Shipment> createFromOrder(
+            @PathVariable Long orderId,
+            @RequestBody CreateShipmentRequest request
+    ) {
+        return ResponseEntity.ok(service.createFromOrder(orderId, request));
     }
 
     @PutMapping("/{id}")
