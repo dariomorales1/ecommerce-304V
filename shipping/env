@@ -1,9 +1,11 @@
-SERVER_PORT=8087
-APP_NAME=shipping-service
+export SERVER_PORT=8087
+export APP_NAME=shipping-service
 
-DB_URL=jdbc:postgresql://levelup.ddns.net:5432/postgres
-DB_USERNAME=postgres
-DB_PASSWORD=TU_PASSWORD_REAL
+export DB_URL=jdbc:postgresql://levelup.ddns.net:5432/postgres
+export DB_USERNAME=postgres.local
+export DB_PASSWORD=59a61cb2b4b59ede581d041ad37c5758
 
-DDL_AUTO=update
-DB_POOL_SIZE=10
+export DDL_AUTO=update
+export DB_POOL_SIZE=10
+
+export SERVICES_SHIPPINGS=http://localhost:8087

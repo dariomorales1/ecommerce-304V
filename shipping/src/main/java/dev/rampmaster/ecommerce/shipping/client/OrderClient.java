@@ -11,7 +11,7 @@ public class OrderClient {
 
     private final WebClient webClient;
 
-    @Value("${services.orders}")
+    @Value("localhost:8086")
     private String baseUrl;
 
     public OrderClient(final WebClient webClient) {
