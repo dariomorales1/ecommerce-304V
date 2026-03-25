@@ -9,3 +9,6 @@ export DDL_AUTO=update
 export DB_POOL_SIZE=10
 
 export SERVICES_SHIPPINGS=http://localhost:8087
+
+export JWT_SECRET=s3cr3tK3yF0rJWT@uthent1c4t10nSh1pp1ng2024!
+export API_KEY=sh1pp1ng-s3rv1c3-4p1-k3y-2024

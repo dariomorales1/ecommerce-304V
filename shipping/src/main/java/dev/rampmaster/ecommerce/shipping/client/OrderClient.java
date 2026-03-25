@@ -18,9 +18,13 @@ public class OrderClient {
         this.webClient = webClient;
     }
 
+    @Value("${security.api-key}")
+    private String apiKey;
+
     public OrderResponse getOrder(Long orderId) {
         return webClient.get()
                 .uri(baseUrl + "/orders/api/orders/{id}", orderId)
+                .header("X-API-KEY", apiKey)
                 .retrieve()
                 .bodyToMono(OrderResponse.class)
                 .block();
